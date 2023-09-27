@@ -20,3 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('previsao-todos', [PrevisaoController::class, 'index']);
+Route::delete('previsao-destroy/{id}', [PrevisaoController::class, 'destroy']);
+Route::post('previsao-salvar', [PrevisaoController::class, 'store']);
+Route::get('previsao-show/{id}', [PrevisaoController::class, 'show']);
+Route::put('previsao-update/{id}', [PrevisaoController::class, 'update']);
+
+Route::resource('previsao', PrevisaoController::class);

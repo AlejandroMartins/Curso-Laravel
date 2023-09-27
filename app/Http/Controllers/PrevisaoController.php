@@ -28,7 +28,11 @@ class PrevisaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Previsao::create([
+            'descricao' => $request->input('descricao'),
+            'data_previsao' => $request->input('data_previsao'),
+            'cidade' => $request->input('cidade'),
+        ]);
     }
 
     /**
@@ -36,7 +40,7 @@ class PrevisaoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return response()->json(Previsao::find($id));
     }
 
     /**
@@ -52,7 +56,12 @@ class PrevisaoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $previsao =  Previsao::find($id);
+        $previsao->descricao = $request->input('descricao');
+        $previsao->data_previsao = $request->input('data_previsao');
+        $previsao->cidade = $request->input('cidade');
+
+        $previsao->update();
     }
 
     /**
@@ -60,6 +69,7 @@ class PrevisaoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $previsao =  Previsao::find($id);
+        $previsao->delete();
     }
 }

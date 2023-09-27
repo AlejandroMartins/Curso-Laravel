@@ -9,7 +9,7 @@ class Previsao extends Model
 {
     use HasFactory;
     protected $table = "previsao";
-    protected $filllabel = [
+    protected $fillable = [
         'descricao',
         'data_previsao',
         'cidade'
